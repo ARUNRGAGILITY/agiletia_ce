@@ -1,7 +1,7 @@
 from django import template
 from markdownx.utils import markdownify
 from django.template import Template, Context
-from app_web.models import Profile
+
 
 register = template.Library()
 
@@ -32,20 +32,22 @@ def markdown_with_context(value, context):
     expanded_text = template.render(Context(context))
     return markdownify(expanded_text)
 
-
-
-# app_web todoepics
-@register.simple_tag(takes_context=True)
-def has_admin_roles(context):
-    request = context['request']
-    user = request.user
-    if user.is_authenticated:
-        profile = Profile.objects.get(user=user)
-        return profile.roles.filter(name__in=["Admin", "SiteAdmin"]).exists()
-    return False
-
-
-
 @register.filter(name='get_item')
 def get_item(dictionary, key):
     return dictionary.get(key)
+
+
+# ## add this after profile setup
+# from app_web.models import Profile
+# # app_web todoepics
+# @register.simple_tag(takes_context=True)
+# def has_admin_roles(context):
+#     request = context['request']
+#     user = request.user
+#     if user.is_authenticated:
+#         profile = Profile.objects.get(user=user)
+#         return profile.roles.filter(name__in=["Admin", "SiteAdmin"]).exists()
+#     return False
+
+
+

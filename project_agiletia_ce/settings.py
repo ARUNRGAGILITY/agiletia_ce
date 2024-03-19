@@ -150,8 +150,8 @@ LOGGING = {
 ### End logging
 
 ## CUSTOMIZATION
-BUILD_VERSION = 'v0.3'
-BUILD_DESCRIPTION = 'Added the initial setup: settings.py, mgmtcmd, tmpltags'
+BUILD_VERSION = 'v0.4'
+BUILD_DESCRIPTION = 'Added the initial setup: urls, static, media earlier'
 ## TEMPLATE DISPLAY
 SITE_TITLE = "AgileTIA"
 SITE_NAME = f"{SITE_TITLE}"
